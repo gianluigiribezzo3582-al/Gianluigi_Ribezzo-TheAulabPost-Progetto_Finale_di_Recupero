@@ -1,0 +1,78 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+:root {
+    --bg-primary: #fdfdfd;
+    --text-primary: #1a1a1a;
+    --brand-color: #5c4033; 
+    --accent-color: #d4a373;
+}
+
+[data-bs-theme="dark"] {
+    --bg-primary: #121212;
+    --text-primary: #e9ecef;
+    --brand-color: #a98467;
+    --accent-color: #6c584c;
+}
+
+body {
+    font-family: 'Instrument Sans', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .navbar-brand {
+    font-family: 'Instrument Serif', serif;
+}
+
+.text-brand { color: var(--brand-color) !important; }
+.bg-brand { background-color: var(--brand-color) !important; }
+.text-accent { color: var(--accent-color) !important; }
+.bg-accent { background-color: var(--accent-color) !important; }
+
+.btn-brand {
+    background-color: var(--brand-color);
+    color: #fff;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-brand:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.card-editorial {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--accent-color);
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+.brand-logo-img {
+    filter: none;
+    transition: filter 0.3s ease;
+}
+
+[data-bs-theme="dark"] .brand-logo-img {
+    filter: sepia(100%) hue-rotate(320deg) brightness(1.2);
+}
+
+.theme-toggle-btn {
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle-btn:hover {
+    background-color: rgba(128, 128, 128, 0.1);
+}
