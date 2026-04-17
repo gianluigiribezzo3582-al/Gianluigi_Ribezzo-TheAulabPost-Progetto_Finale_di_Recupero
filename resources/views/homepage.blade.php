@@ -40,13 +40,13 @@
                             <span class="badge bg-accent text-dark small fw-bold uppercase">Tecnologia</span>
                             <span class="text-muted small">5 min read</span>
                         </div>
-                        <h4 class="card-title fw-bold mb-3">Il futuro del Web Development nel 2024</h4>
-                        <p class="card-text opacity-75 mb-4">Esploriamo le nuove frontiere delle tecnologie web e come queste cambieranno il modo in cui lavoriamo.</p>
+                        <h4 class="card-title fw-bold mb-3">Il futuro del Web Development nel 2026</h4>
+                        <p class="card-text opacity-75 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore consectetur doloribus at dolor labore iure voluptas odio asperiores? Quas magnam doloribus veniam corrupti sunt vero error cumque iste fugit possimus. Aliquid fugiat enim maxime exercitationem hic corrupti libero, atque laboriosam, autem, id nulla eum odio rerum ipsum odit reiciendis sequi.</p>
                         <div class="d-flex align-items-center mt-auto">
                             <i class="bi bi-person-circle fs-4 me-2 text-brand"></i>
                             <div>
                                 <h6 class="mb-0 fw-bold small">Autore Esempio</h6>
-                                <span class="text-muted small">17 Aprile 2024</span>
+                                <span class="text-muted small">17 Aprile 2026</span>
                             </div>
                         </div>
                     </div>
