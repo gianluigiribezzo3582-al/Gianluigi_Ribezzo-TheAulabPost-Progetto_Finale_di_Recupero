@@ -3,6 +3,13 @@
 
     <div class="container-fluid p-5 bg-body-secondary border-bottom shadow-sm">
         <div class="container">
+            @if (session('status') == 'user-registered' || session('status') == 'login')
+                <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    Bentornato, <strong>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</strong>, siamo lieti di rivederti!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="row align-items-center py-5">
                 <div class="col-lg-6">
                     <h1 class="display-1 fw-bold text-brand mb-3">Le Storie che Contano</h1>

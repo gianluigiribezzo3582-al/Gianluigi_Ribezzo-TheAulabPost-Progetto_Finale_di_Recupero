@@ -24,10 +24,43 @@
                 </li>
             </ul>
             
-            <div class="d-none d-lg-flex align-items-center">
-                <div class="ms-3">
-                    <button class="btn btn-brand btn-sm px-3">Diventa Autore</button>
-                </div>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                @auth
+                    <li class="nav-item me-lg-3">
+                        <a href="#" class="btn btn-brand btn-sm px-3">
+                            <i class="bi bi-plus-circle me-1"></i> Pubblica
+                        </a>
+                    </li>
+                @endauth
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="{{ route('login') }}">Accedi</a>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="{{ route('register') }}" class="btn btn-brand btn-sm px-3">Diventa un Autore</a>
+                    </li>
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-medium text-capitalize" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Esci
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endguest
+            </ul>
+
+            <div class="d-none d-lg-flex align-items-center ms-lg-3">
                 <div id="themeToggle" class="theme-toggle-btn">
                     <i class="bi bi-sun-fill text-warning d-none" id="themeIconSun"></i>
                     <i class="bi bi-moon-stars-fill text-primary" id="themeIconMoon"></i>
