@@ -6,7 +6,7 @@
     <title>{{ $title ?? 'The Aulab Post' }}</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('logo.svg') }}">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
