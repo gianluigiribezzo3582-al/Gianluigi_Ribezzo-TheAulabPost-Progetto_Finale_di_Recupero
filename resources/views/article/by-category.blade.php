@@ -32,7 +32,7 @@
                                     </h6>
                                 </div>
                             </div>
-                            <a href="{{ route('article.show', compact('article')) }}" class="btn btn-brand btn-sm">Leggi</a>
+                            <a href="{{ route('article.show', $article) }}" class="btn btn-brand btn-sm">Leggi</a>
                         </div>
                     </div>
                 </div>

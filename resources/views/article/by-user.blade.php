@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container-fluid p-5 bg-body-secondary border-bottom shadow-sm">
         <div class="container text-center py-5">
-            <h1 class="display-1 fw-bold text-brand">Articoli di: {{ $user->first_name }} {{ $user->last_name }}</h1>
+            <h1 class="display-1 fw-bold text-brand">Articoli di {{ $user->first_name }} {{ $user->last_name }}</h1>
         </div>
     </div>
 
@@ -32,7 +32,7 @@
                                     </h6>
                                 </div>
                             </div>
-                            <a href="{{ route('article.show', compact('article')) }}" class="btn btn-brand btn-sm">Leggi</a>
+                            <a href="{{ route('article.show', $article) }}" class="btn btn-brand btn-sm">Leggi</a>
                         </div>
                     </div>
                 </div>

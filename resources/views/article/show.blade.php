@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class="mt-5 pt-5 border-top">
-                    <a href="{{ route('article.index') }}" class="btn btn-outline-brand">Torna alla lista</a>
+                    <a href="{{ route('article.index') }}" class="btn btn-outline-brand">Torna all'ingresso</a>
                 </div>
             </div>
         </div>
