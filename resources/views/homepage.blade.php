@@ -76,7 +76,7 @@
 
         <div class="row g-4">
             @forelse($articles as $article)
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="card h-100 card-editorial shadow-sm">
                     @if($article->image)
                         <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="{{ $article->title }}">
