@@ -14,6 +14,14 @@
 
     <div class="container-fluid p-5 bg-body-secondary border-bottom shadow-sm">
         <div class="container">
+            @if (session('message'))
+                <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
+                    <i class="bi bi-check-circle-fill me-2"></i>
+                    {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             @if (session('status') == 'login')
                 <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
                     <i class="bi bi-check-circle-fill me-2"></i>

@@ -27,8 +27,8 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                 @auth
                     <li class="nav-item me-lg-3">
-                        <a href="#" class="btn btn-brand btn-sm px-3">
-                            <i class="bi bi-plus-circle me-1"></i> Pubblica
+                        <a href="{{ route('article.create') }}" class="btn btn-brand btn-sm px-3">
+                            <i class="bi bi-plus-circle me-1"></i> Inserisci articolo
                         </a>
                     </li>
                 @endauth
