@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Article;
 use Illuminate\Http\Request;
 
 
@@ -8,6 +9,7 @@ class PublicController extends Controller
 {
     public function homepage()
     {
-        return view('homepage');
+        $articles = Article::orderBy('created_at', 'desc')->take(4)->get();
+        return view('homepage', compact('articles'));
     }
 }

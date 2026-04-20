@@ -20,13 +20,13 @@
                     <a class="nav-link active fw-medium" href="{{ route('homepage') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" href="#">Tutti gli Articoli</a>
+                    <a class="nav-link fw-medium" href="{{ route('article.index') }}">Tutti gli articoli</a>
                 </li>
             </ul>
             
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center flex-row justify-content-end">
                 @auth
-                    <li class="nav-item me-lg-3">
+                    <li class="nav-item me-3">
                         <a href="{{ route('article.create') }}" class="btn btn-brand btn-sm px-3">
                             <i class="bi bi-plus-circle me-1"></i> Inserisci articolo
                         </a>
@@ -36,8 +36,8 @@
                     <li class="nav-item">
                         <a class="nav-link fw-medium" href="{{ route('login') }}">Accedi</a>
                     </li>
-                    <li class="nav-item ms-lg-3">
-                        <a href="{{ route('register') }}" class="btn btn-brand btn-sm px-3">Diventa un Autore</a>
+                    <li class="nav-item ms-3">
+                        <a href="{{ route('register') }}" class="btn btn-brand btn-sm px-3 text-nowrap">Diventa un Autore</a>
                     </li>
                 @else
                     <li class="nav-item dropdown">
@@ -109,4 +109,14 @@
 
     document.getElementById('themeToggle')?.addEventListener('click', toggleTheme)
     document.getElementById('themeToggleMobile')?.addEventListener('click', toggleTheme)
+
+
+    // Chiudi navbar allo scroll
+    window.addEventListener('scroll', () => {
+        let navbarCollapse = document.getElementById('navbarSupportedContent');
+        let navbarToggler = document.querySelector('.navbar-toggler');
+        if (navbarCollapse.classList.contains('show')) {
+            navbarToggler.click();
+        }
+    });
 </script>

@@ -8,8 +8,8 @@
             <div class="col-md-4">
                 <h6 class="fw-bold mb-3">Link Utili</h6>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-decoration-none text-reset small">Tutti i post</a></li>
-                    <li><a href="#" class="text-decoration-none text-reset small">Candidati come autore</a></li>
+                    <li><a href={{ route('article.index') }} class="text-decoration-none text-reset small">Tutti gli articoli</a></li>
+                    <li><a href="{{ route('register') }}" class="btn btn-brand btn-sm px-3 text-nowrap">Candidati come autore</a></li>
                 </ul>
             </div>
             <div class="col-md-4 text-md-end">

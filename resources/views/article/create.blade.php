@@ -2,7 +2,7 @@
     <div class="container-fluid p-5 bg-secondary-subtle text-center">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h1 class="display-1">Inserisci un articolo</h1>
+                <h1 class="display-1">Scrivi il tuo articolo</h1>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                         @enderror
                     </div>
                     <div class="mt-3 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-brand">Inserisci articolo</button>
+                        <button type="submit" class="btn btn-brand">Invia il tuo articolo ai revisori</button>
                     </div>
                     <div class="text-center mt-3">
                         <p class="small text-muted mb-4 text-center">I campi contrassegnati con <span class="text-danger">*</span> sono obbligatori</p>

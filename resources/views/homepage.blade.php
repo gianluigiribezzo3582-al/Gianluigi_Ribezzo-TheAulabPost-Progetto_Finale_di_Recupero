@@ -53,8 +53,7 @@
                     <h1 class="display-1 fw-bold text-brand mb-3">Le Storie che Contano</h1>
                     <p class="fs-4 mb-4 opacity-75">Unisciti alla nostra community di autori e lettori. Esplora contenuti esclusivi su tecnologia, design e innovazione.</p>
                     <div class="d-flex gap-3">
-                        <button class="btn btn-brand btn-lg px-4">Inizia a Leggere</button>
-                        <button class="btn btn-outline-secondary btn-lg px-4">Scopri di più</button>
+                        <a href="{{ route('article.index') }}" class="btn btn-brand btn-lg px-4">Esplora la Biblioteca Digitale</a>
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
@@ -75,24 +74,33 @@
         </div>
 
 
-        //modificare qui per adeguare con post da database
         <div class="row g-4">
-            @forelse([1, 2, 3] as $post)
+            @forelse($articles as $article)
             <div class="col-md-4">
                 <div class="card h-100 card-editorial shadow-sm">
-                    <div class="card-body p-4">
+                    @if($article->image)
+                        <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="{{ $article->title }}">
+                    @else
+                        <img src="https://picsum.photos/600/400" class="card-img-top" alt="Immagine di default">
+                    @endif
+                    <div class="card-body p-4 d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge bg-accent text-dark small fw-bold uppercase">Tecnologia</span>
-                            <span class="text-muted small">5 min read</span>
+                            <a href="{{ route('article.byCategory', ['category' => $article->category]) }}" class="badge bg-accent text-dark small fw-bold text-uppercase text-decoration-none">{{ $article->category->name }}</a>
+                            <span class="text-muted small">{{ $article->created_at->format('d/m/Y') }}</span>
                         </div>
-                        <h4 class="card-title fw-bold mb-3">Il futuro del Web Development nel 2026</h4>
-                        <p class="card-text opacity-75 mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore consectetur doloribus at dolor labore iure voluptas odio asperiores? Quas magnam doloribus veniam corrupti sunt vero error cumque iste fugit possimus. Aliquid fugiat enim maxime exercitationem hic corrupti libero, atque laboriosam, autem, id nulla eum odio rerum ipsum odit reiciendis sequi.</p>
-                        <div class="d-flex align-items-center mt-auto">
-                            <i class="bi bi-person-circle fs-4 me-2 text-brand"></i>
-                            <div>
-                                <h6 class="mb-0 fw-bold small">Autore Esempio</h6>
-                                <span class="text-muted small">17 Aprile 2026</span>
+                        <h4 class="card-title fw-bold mb-3">{{ $article->title }}</h4>
+                        <h6 class="card-subtitle mb-3 text-muted">{{ $article->subtitle }}</h6>
+                        <p class="card-text opacity-75 mb-4">{{ Str::limit($article->body, 150) }}</p>
+                        <div class="d-flex align-items-center mt-auto justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-person-circle fs-4 me-2 text-brand"></i>
+                                <div>
+                                    <h6 class="mb-0 fw-bold small">
+                                        <a href="{{ route('article.byUser', ['user' => $article->user]) }}" class="text-reset text-decoration-none">{{ $article->user->first_name }} {{ $article->user->last_name }}</a>
+                                    </h6>
+                                </div>
                             </div>
+                            <a href="{{ route('article.show', compact('article')) }}" class="btn btn-brand btn-sm">Leggi</a>
                         </div>
                     </div>
                 </div>

@@ -76,3 +76,55 @@ h1, h2, h3, h4, h5, h6, .display-1, .display-2, .display-3, .navbar-brand {
 .theme-toggle-btn:hover {
     background-color: rgba(128, 128, 128, 0.1);
 }
+
+
+/* Pagination Custom Styling */
+.pagination {
+    --bs-pagination-color: var(--brand-color);
+    --bs-pagination-hover-color: var(--accent-color);
+    --bs-pagination-active-bg: var(--brand-color);
+    --bs-pagination-active-border-color: var(--brand-color);
+    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(92, 64, 51, 0.25);
+}
+
+
+.page-link.active, .active > .page-link {
+    background-color: var(--brand-color) !important;
+    border-color: var(--brand-color) !important;
+    color: #fff !important;
+}
+
+
+.page-link {
+    color: var(--brand-color);
+}
+
+
+.page-link:hover {
+    color: var(--accent-color);
+}
+
+
+/* Hide ALL Laravel Default Pagination Text/Summary */
+.pagination-container nav p.small, 
+.pagination-container nav div > div:first-child {
+    display: none !important;
+}
+
+
+/* Fix overlap and force only numbered pagination layout */
+.pagination-container nav {
+    justify-content: center !important;
+}
+
+
+.pagination-container .pagination {
+    margin-bottom: 0;
+}
+
+
+[data-bs-theme="dark"] .pagination {
+    --bs-pagination-bg: #1e1e1e;
+    --bs-pagination-border-color: #333;
+    --bs-pagination-disabled-bg: #121212;
+}
