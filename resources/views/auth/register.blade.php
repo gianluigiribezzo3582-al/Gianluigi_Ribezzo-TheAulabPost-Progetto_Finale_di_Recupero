@@ -4,7 +4,7 @@
             <div class="col-md-6">
                 <div class="card shadow border-0">
                     <div class="card-body p-5">
-                        <h2 class="text-center mb-4">Diventa un autore the Aulab Post</h2>
+                        <h2 class="text-center mb-4">Unisciti a The Aulab Post</h2>
                         
                         <form action="{{ route('register') }}" method="POST">
                             @csrf
@@ -55,17 +55,6 @@
                                 <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
                             </div>
                             
-                            <div class="mb-4">
-                                <label for="role" class="form-label">Registrati come: <span class="text-danger">*</span></label>
-                                <select name="role" id="role" class="form-select @error('role') is-invalid @enderror" required>
-                                    <option value="reader" {{ old('role') == 'reader' ? 'selected' : '' }}>Lettore</option>
-                                    <option value="writer" {{ old('role') == 'writer' ? 'selected' : '' }}>Autore</option>
-                                </select>
-                                @error('role')
-                                <span class="invalid-feedback">{{ $message }}</span>
-                                @enderror
-                            </div>
-
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary">Registrati</button>
                             </div>

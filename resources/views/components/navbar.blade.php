@@ -17,10 +17,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                 <li class="nav-item">
-                    <a class="nav-link active fw-medium" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link fw-medium" href="{{ route('article.index') }}">Tutti gli articoli</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link fw-medium" href="{{ route('article.index') }}">Tutti gli articoli</a>
+                    <a class="nav-link fw-medium" href="{{ route('careers') }}">Lavora con noi</a>
                 </li>
             </ul>
             
@@ -29,7 +29,7 @@
                     @if(Auth::user()->is_writer)
                     <li class="nav-item me-3">
                         <a href="{{ route('article.create') }}" class="btn btn-brand btn-sm px-3">
-                            <i class="bi bi-plus-circle me-1"></i> Inserisci articolo
+                            <i class="bi bi-plus-circle me-1"></i> Pubblica articolo
                         </a>
                     </li>
                     @endif
@@ -39,7 +39,7 @@
                         <a class="nav-link fw-medium" href="{{ route('login') }}">Accedi</a>
                     </li>
                     <li class="nav-item ms-3">
-                        <a href="{{ route('register') }}" class="btn btn-brand btn-sm px-3 text-nowrap">Diventa un Autore</a>
+                        <a href="{{ route('register') }}" class="btn btn-brand btn-sm px-3 text-nowrap">Registrati</a>
                     </li>
                 @else
                     <li class="nav-item dropdown">

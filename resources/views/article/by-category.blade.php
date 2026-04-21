@@ -1,7 +1,7 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-body-secondary border-bottom shadow-sm">
+    <div class="container-fluid p-3 bg-body-secondary border-bottom shadow-sm">
         <div class="container text-center py-5">
-            <h1 class="display-1 fw-bold text-brand">Categoria: {{ $category->name }}</h1>
+            <h1 class="display-4 fw-bold text-brand">{{ $category->name }}</h1>
         </div>
     </div>
 
@@ -10,11 +10,13 @@
             @forelse($articles as $article)
             <div class="col-md-4">
                 <div class="card h-100 card-editorial shadow-sm">
-                    @if($article->image)
-                        <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="{{ $article->title }}">
-                    @else
-                        <img src="https://picsum.photos/600/400" class="card-img-top" alt="Immagine di default">
-                    @endif
+                    <div style="height: 200px; overflow: hidden;">
+                        @if($article->image)
+                            <img src="{{ Storage::url($article->image) }}" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
+                        @else
+                            <img src="https://picsum.photos/600/400" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
+                        @endif
+                    </div>
                     <div class="card-body p-4 d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <span class="badge bg-accent text-dark small fw-bold text-uppercase">{{ $article->category->name }}</span>
@@ -28,7 +30,7 @@
                                 <i class="bi bi-person-circle fs-4 me-2 text-brand"></i>
                                 <div>
                                     <h6 class="mb-0 fw-bold small">
-                                        <a href="{{ route('article.byUser', ['user' => $article->user]) }}" class="text-reset text-decoration-none">{{ $article->user->first_name }} {{ $article->user->last_name }}</a>
+                                        <a href="{{ route('article.byUser', ['user' => $article->user, 'name' => $article->user->getSlug()]) }}" class="text-reset text-decoration-none">{{ $article->user->getFullName() }}</a>
                                     </h6>
                                 </div>
                             </div>

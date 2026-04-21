@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class CareerRequestMail extends Mailable
+class WorkWithUsMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -27,14 +27,14 @@ class CareerRequestMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nuova richiesta di collaborazione',
+            subject: 'Nuova candidatura per posizione aperta',
         );
     }
 
     public function content(): Content
     {
         return new Content(
-            view: 'mail.career-request-mail',
+            view: 'mail.work-with-us-mail',
         );
     }
 

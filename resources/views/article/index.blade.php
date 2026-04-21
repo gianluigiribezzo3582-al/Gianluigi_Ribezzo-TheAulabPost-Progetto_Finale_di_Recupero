@@ -1,19 +1,31 @@
 <x-layout>
-    <div class="container-fluid p-4 bg-body-secondary border-bottom shadow-sm">
+    <div class="container-fluid p-3 bg-body-secondary border-bottom shadow-sm">
         <div class="container text-center py-2">
-            <h1 class="display-5 fw-bold text-brand m-0">Tutti gli Articoli</h1>
+            <h1 class="display-6 fw-bold text-brand m-0">Tutti gli Articoli</h1>
         </div>
     </div>
 
-    <div class="container my-5">
-        <div class="row align-items-center justify-content-end mb-4">
+    <div class="container my-5 ">
+        <div class="row align-items-center justify-content-between mb-4">
+            <div class="col-md-4">
+                <form action="{{ route('article.index') }}" method="GET" class="d-flex">
+                    <input type="text" name="search" class="form-control form-control-sm me-2" placeholder="Cerca per autore..." value="{{ request('search') }}">
+                    <button type="submit" class="btn btn-brand btn-sm">Cerca</button>
+                    @if(request('search'))
+                        <a href="{{ route('article.index') }}" class="btn btn-outline-secondary btn-sm ms-2">Reset</a>
+                    @endif
+                </form>
+            </div>
             <div class="col-auto">
                 <form action="{{ route('article.index') }}" method="GET" class="d-flex align-items-center">
+                    @if(request('search'))
+                        <input type="hidden" name="search" value="{{ request('search') }}">
+                    @endif
                     <label for="perPage" class="me-2 text-muted small">Mostra:</label>
                     <select name="perPage" id="perPage" class="form-select form-select-sm" style="width: auto;" onchange="this.form.submit()">
-                        <option value="10" {{ request('perPage') == 10 ? 'selected' : '' }}>10</option>
-                        <option value="50" {{ request('perPage') == 50 ? 'selected' : '' }}>50</option>
-                        <option value="100" {{ request('perPage') == 100 ? 'selected' : '' }}>100</option>
+                        <option value="12" {{ request('perPage') == 12 ? 'selected' : '' }}>12</option>
+                        <option value="48" {{ request('perPage') == 48 ? 'selected' : '' }}>48</option>
+                        <option value="96" {{ request('perPage') == 96 ? 'selected' : '' }}>96</option>
                     </select>
                 </form>
             </div>
@@ -27,10 +39,10 @@
                         @if($article->image)
                             <img src="{{ Storage::url($article->image) }}" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
                         @else
-                            <img src="https://picsum.photos/600/400?random={{ $article->id }}" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="Immagine di default">
+                            <img src="https://picsum.photos/600/400" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
                         @endif
                     </div>
-                    <div class="card-body p-4 d-flex flex-column">
+                    <div class="card-body p-4 d-flex flex-column bg-body-secondary">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <a href="{{ route('article.byCategory', ['category' => $article->category]) }}" class="badge bg-accent text-dark small fw-bold text-uppercase text-decoration-none">{{ $article->category->name }}</a>
                             <span class="text-muted small">{{ $article->created_at->format('d/m/Y') }}</span>
@@ -43,7 +55,7 @@
                                 <i class="bi bi-person-circle fs-4 me-2 text-brand"></i>
                                 <div>
                                     <h6 class="mb-0 fw-bold small">
-                                        <a href="{{ route('article.byUser', ['user' => $article->user]) }}" class="text-reset text-decoration-none">{{ $article->user->first_name }} {{ $article->user->last_name }}</a>
+                                        <a href="{{ route('article.byUser', ['user' => $article->user, 'name' => $article->user->getSlug()]) }}" class="text-reset text-decoration-none">{{ $article->user->getFullName() }}</a>
                                     </h6>
                                 </div>
                             </div>

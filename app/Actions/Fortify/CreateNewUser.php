@@ -2,8 +2,6 @@
 
 namespace App\Actions\Fortify;
 
-use App\Mail\CareerRequestMail;
-use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -36,7 +34,6 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-            'role' => ['required', Rule::in(['reader', 'writer'])],
         ])->validate();
 
         $user = User::create([
@@ -46,10 +43,6 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-
-        if ($input['role'] == 'writer') {
-            Mail::to('admin@theaulabpost.it')->send(new CareerRequestMail(['user' => $user, 'role' => 'writer']));
-        }
 
         session()->flash('status', 'user-registered');
 

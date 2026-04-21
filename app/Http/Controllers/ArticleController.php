@@ -17,6 +17,7 @@ class ArticleController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('auth', except: ['index', 'show', 'byCategory', 'byUser']),
+            new Middleware('userIsWriter', only: ['create', 'store']),
         ];
     }
 
@@ -25,8 +26,20 @@ class ArticleController extends Controller implements HasMiddleware
      */
     public function index(Request $request)
     {
-        $perPage = $request->input('perPage', 10);
-        $articles = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->paginate($perPage)->withQueryString();
+        $perPage = $request->input('perPage', 12);
+        $search = $request->input('search');
+        
+        $query = Article::where('is_accepted', true);
+
+        if ($search) {
+            $query->whereHas('user', function($q) use ($search) {
+                $q->where('first_name', 'LIKE', "%$search%")
+                  ->orWhere('last_name', 'LIKE', "%$search%")
+                  ->orWhere('username', 'LIKE', "%$search%");
+            });
+        }
+
+        $articles = $query->orderBy('created_at', 'desc')->paginate($perPage)->withQueryString();
         return view('article.index', compact('articles'));
     }
 
@@ -64,7 +77,7 @@ class ArticleController extends Controller implements HasMiddleware
 
         if ($request->hasFile('image')) {
             $article->update([
-                'image' => $request->file('image')->store('public/articles'),
+                'image' => $request->file('image')->store('articles', 'public'),
             ]);
         }
 

@@ -12,7 +12,7 @@
         }
     </style>
 
-    <div class="container-fluid p-5 bg-body-secondary border-bottom shadow-sm">
+    <div class="container-fluid p-4 bg-body-secondary border-bottom shadow-sm">
         <div class="container">
             @if (session('status') == 'login')
                 <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
@@ -23,8 +23,8 @@
             @endif
 
             @if (session('status') == 'user-registered')
-                <div class="welcome-section text-center p-5 mb-5 bg-brand text-white rounded shadow-lg border-brand">
-                    <h2 class="display-3 fw-bold mb-3">Benvenuto/a a bordo!</h2>
+                <div class="welcome-section text-center p-4 mb-5 bg-brand text-white rounded shadow-lg border-brand">
+                    <h2 class="display-4 fw-bold mb-3">Benvenuto/a a bordo!</h2>
                     <p class="fs-4">Grazie per esserti registrato/a, <strong>{{ Auth::user()->first_name }}</strong>.</p>
                 </div>
                 <script>
@@ -40,10 +40,10 @@
                     }, 4000);
                 </script>
             @endif
-            <div class="row align-items-center py-5">
+            <div class="row align-items-center py-4">
                 <div class="col-lg-6">
-                    <h1 class="display-1 fw-bold text-brand mb-3">Le Storie che Contano</h1>
-                    <p class="fs-4 mb-4 opacity-75">Unisciti alla nostra community di autori e lettori. Esplora contenuti esclusivi su tecnologia, design e innovazione.</p>
+                    <h1 class="display-3 fw-bold text-brand mb-3">Le Storie che Contano</h1>
+                    <p class="fs-5 mb-4 opacity-75">Unisciti alla nostra community di autori e lettori. Esplora contenuti esclusivi su tecnologia, design e innovazione.</p>
                     <div class="d-flex gap-3">
                         <a href="{{ route('article.index') }}" class="btn btn-brand btn-lg px-4">Esplora la Biblioteca Digitale</a>
                     </div>
@@ -70,12 +70,14 @@
             @forelse($articles as $article)
             <div class="col-md-3">
                 <div class="card h-100 card-editorial shadow-sm">
-                    @if($article->image)
-                        <img src="{{ Storage::url($article->image) }}" class="card-img-top" alt="{{ $article->title }}">
-                    @else
-                        <img src="https://picsum.photos/600/400" class="card-img-top" alt="Immagine di default">
-                    @endif
-                    <div class="card-body p-4 d-flex flex-column">
+                    <div style="height: 200px; overflow: hidden;">
+                        @if($article->image)
+                            <img src="{{ Storage::url($article->image) }}" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
+                        @else
+                            <img src="https://picsum.photos/600/400" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
+                        @endif
+                    </div>
+                    <div class="card-body p-4 d-flex flex-column bg-body-secondary">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <a href="{{ route('article.byCategory', ['category' => $article->category]) }}" class="badge bg-accent text-dark small fw-bold text-uppercase text-decoration-none">{{ $article->category->name }}</a>
                             <span class="text-muted small">{{ $article->created_at->format('d/m/Y') }}</span>
@@ -88,7 +90,7 @@
                                 <i class="bi bi-person-circle fs-4 me-2 text-brand"></i>
                                 <div>
                                     <h6 class="mb-0 fw-bold small">
-                                        <a href="{{ route('article.byUser', ['user' => $article->user]) }}" class="text-reset text-decoration-none">{{ $article->user->first_name }} {{ $article->user->last_name }}</a>
+                                        <a href="{{ route('article.byUser', ['user' => $article->user, 'name' => $article->user->getSlug()]) }}" class="text-reset text-decoration-none">{{ $article->user->getFullName() }}</a>
                                     </h6>
                                 </div>
                             </div>

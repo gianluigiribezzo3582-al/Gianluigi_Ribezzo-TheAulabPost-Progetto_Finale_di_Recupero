@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 #[Fillable(['first_name', 'last_name', 'username', 'email', 'password', 'is_author', 'is_admin', 'is_revisor', 'is_writer'])]
 #[Hidden(['password', 'remember_token'])]
@@ -23,6 +24,16 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
     }
 
+    public function getFullName(): string
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getSlug(): string
+    {
+        return Str::slug($this->getFullName());
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -33,6 +44,10 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_admin' => 'boolean',
+            'is_revisor' => 'boolean',
+            'is_writer' => 'boolean',
+            'is_author' => 'boolean',
         ];
     }
 }

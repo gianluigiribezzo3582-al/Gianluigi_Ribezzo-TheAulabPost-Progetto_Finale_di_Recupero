@@ -16,17 +16,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Richiesta di Collaborazione</h1>
-        <p>Hai ricevuto una nuova candidatura per il ruolo di <strong>Autore</strong>.</p>
+        <h1>Candidatura per Posizione Aperta</h1>
+        <p>Hai ricevuto una nuova candidatura per il ruolo di <strong>{{ $info['role'] }}</strong>.</p>
         
         <div class="info-box">
-            <p><span class="label">Username:</span> {{ $info['user']->username }}</p>
             <p><span class="label">Nome:</span> {{ $info['user']->first_name }} {{ $info['user']->last_name }}</p>
             <p><span class="label">Email:</span> {{ $info['user']->email }}</p>
         </div>
 
         @if(isset($info['message']))
-            <p><strong>Messaggio motivazionale:</strong></p>
+            <p><strong>Messaggio:</strong></p>
             <div class="message-box">
                 "{{ $info['message'] }}"
             </div>

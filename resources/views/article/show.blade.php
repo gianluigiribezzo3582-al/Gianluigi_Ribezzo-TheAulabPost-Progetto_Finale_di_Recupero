@@ -1,7 +1,7 @@
 <x-layout>
-    <div class="container-fluid p-5 bg-body-secondary border-bottom shadow-sm">
+    <div class="container-fluid p-3 bg-body-secondary border-bottom shadow-sm">
         <div class="container text-center py-5">
-            <h1 class="display-1 fw-bold text-brand">{{ $article->title }}</h1>
+            <h1 class="display-4 fw-bold text-brand">{{ $article->title }}</h1>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
                     <div class="d-flex align-items-center">
                         <i class="bi bi-person-circle fs-4 me-2 text-brand"></i>
                         <h6 class="mb-0 fw-bold">
-                            <a href="{{ route('article.byUser', ['user' => $article->user]) }}" class="text-reset text-decoration-none">{{ $article->user->first_name }} {{ $article->user->last_name }}</a>
+                            <a href="{{ route('article.byUser', ['user' => $article->user, 'name' => $article->user->getSlug()]) }}" class="text-reset text-decoration-none">{{ $article->user->getFullName() }}</a>
                         </h6>
                     </div>
                 </div>

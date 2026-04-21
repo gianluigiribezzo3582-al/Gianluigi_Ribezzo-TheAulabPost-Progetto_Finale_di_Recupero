@@ -8,14 +8,8 @@
             <div class="col-md-4">
                 <h6 class="fw-bold mb-3">Link Utili</h6>
                 <ul class="list-unstyled">
-                    <li><a href={{ route('article.index') }} class="text-decoration-none text-reset small">Tutti gli articoli</a></li>
-                    @guest
-                        <li><a href="{{ route('register') }}" class="btn btn-brand btn-sm px-3 text-nowrap mt-2">Candidati come autore</a></li>
-                    @else
-                        @if(!Auth::user()->is_writer)
-                            <li><a href="{{ route('careers') }}" class="btn btn-brand btn-sm px-3 text-nowrap mt-2">Candidati come autore</a></li>
-                        @endif
-                    @endguest
+                    <li><a href="{{ route('article.index') }}" class="text-decoration-none text-reset small">Tutti gli articoli</a></li>
+                    <li><a href="{{ route('careers') }}" class="btn btn-brand btn-sm px-3 text-nowrap mt-2">Lavora con noi</a></li>
                 </ul>
             </div>
             <div class="col-md-4 text-md-end">
