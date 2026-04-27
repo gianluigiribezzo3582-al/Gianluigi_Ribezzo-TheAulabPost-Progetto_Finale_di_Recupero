@@ -47,13 +47,13 @@
                                         <label for="role" class="form-label">Per quale ruolo ti candidi?</label>
                                         <select name="role" id="role" class="form-control" required>
                                             <option value="" selected disabled>Scegli il ruolo</option>
-                                            @if(Auth::user()->is_admin === false)
+                                            @if(!Auth::user()->is_admin && Auth::user()->role !== 'requested_admin')
                                                 <option value="admin">Amministratore</option>
                                             @endif
-                                            @if(Auth::user()->is_revisor === false)
+                                            @if(!Auth::user()->is_revisor && Auth::user()->role !== 'requested_revisor')
                                                 <option value="revisor">Revisore</option>
                                             @endif
-                                            @if(Auth::user()->is_writer === false && Auth::user()->is_author === false)
+                                            @if(!Auth::user()->is_writer && Auth::user()->role !== 'requested_writer')
                                                 <option value="writer">Redattore</option>
                                             @endif
                                         </select>

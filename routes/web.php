@@ -3,6 +3,8 @@
 
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RevisorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
@@ -18,3 +20,19 @@ Route::post('/careers/submit', [PublicController::class, 'careersSubmit'])->name
 
 Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
 Route::post('/article/store', [ArticleController::class, 'store'])->name('article.store');
+
+// Rotte per Admin
+Route::middleware('userIsAdmin')->prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('/approve/admin/{user}',   [AdminController::class, 'approveAdmin'])->name('admin.approveAdmin');
+    Route::post('/approve/revisor/{user}', [AdminController::class, 'approveRevisor'])->name('admin.approveRevisor');
+    Route::post('/approve/writer/{user}',  [AdminController::class, 'approveWriter'])->name('admin.approveWriter');
+});
+
+// Rotte per Revisori
+Route::middleware('userIsRevisor')->prefix('revisor')->group(function () {
+    Route::get('/dashboard', [RevisorController::class, 'dashboard'])->name('revisor.dashboard');
+    Route::post('/accept/{article}',      [RevisorController::class, 'accept'])->name('revisor.accept');
+    Route::post('/reject/{article}',      [RevisorController::class, 'reject'])->name('revisor.reject');
+    Route::post('/reset/{article}',       [RevisorController::class, 'resetReview'])->name('revisor.resetReview');
+});

@@ -47,7 +47,13 @@
                             {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end shadow border-0">
-                            <li><a class="dropdown-item" href="#">Il tuo Quotidiano</a></li>
+                            @if(Auth::user()->is_admin)
+                                <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}"><i class="bi bi-shield-lock me-2"></i>Dashboard Admin</a></li>
+                            @elseif(Auth::user()->is_revisor)
+                                <li><a class="dropdown-item" href="{{ route('revisor.dashboard') }}"><i class="bi bi-eye me-2"></i>Dashboard Revisore</a></li>
+                            @elseif(Auth::user()->is_writer)
+                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-2"></i>La mia Dashboard</a></li>
+                            @endif
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

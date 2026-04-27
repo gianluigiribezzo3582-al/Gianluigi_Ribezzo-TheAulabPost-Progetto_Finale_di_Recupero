@@ -20,7 +20,7 @@ class PublicController extends Controller implements HasMiddleware
 
     public function homepage()
     {
-        $articles = Article::where('is_accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
+        $articles = Article::where('is_accepted', true)->with(['user', 'category'])->orderBy('created_at', 'desc')->take(4)->get();
         return view('homepage', compact('articles'));
     }
 
@@ -46,21 +46,18 @@ class PublicController extends Controller implements HasMiddleware
         switch ($request->role) {
             case 'admin':
                 $role = 'Amministratore';
-                $user->is_admin = null;
                 break;
             case 'revisor':
                 $role = 'Revisore';
-                $user->is_revisor = null;
                 break;
             case 'writer':
                 $role = 'Redattore';
-                $user->is_writer = null;
-                $user->is_author = null;
                 break;
         }
 
         if(in_array($request->role, ['admin', 'revisor', 'writer'])){
-            $user->update();
+            $user->role = "requested_" . $request->role;
+            $user->save();
         }
 
         try {

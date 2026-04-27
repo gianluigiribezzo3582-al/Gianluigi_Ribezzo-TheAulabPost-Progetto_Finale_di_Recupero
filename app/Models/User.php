@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
-#[Fillable(['first_name', 'last_name', 'username', 'email', 'password', 'is_author', 'is_admin', 'is_revisor', 'is_writer'])]
+#[Fillable(['first_name', 'last_name', 'username', 'email', 'password', 'role'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
@@ -34,6 +34,22 @@ class User extends Authenticatable
         return Str::slug($this->getFullName());
     }
 
+    // Accessori per compatibilità
+    public function getIsAdminAttribute(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function getIsRevisorAttribute(): bool
+    {
+        return $this->role === 'revisor';
+    }
+
+    public function getIsWriterAttribute(): bool
+    {
+        return $this->role === 'writer';
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -44,10 +60,6 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'is_admin' => 'boolean',
-            'is_revisor' => 'boolean',
-            'is_writer' => 'boolean',
-            'is_author' => 'boolean',
         ];
     }
 }
