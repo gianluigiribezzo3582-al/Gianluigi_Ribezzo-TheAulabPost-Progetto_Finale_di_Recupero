@@ -1,0 +1,39 @@
+<svg width="100%" viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>The Aulab Post — icona libro con righe e AP</title>
+  <desc>Icona quadrata con libro aperto, righe di testo stilizzate e monogramma AP in caramello</desc>
+
+  <rect x="140" y="140" width="400" height="400" rx="64" fill="#5c4033"/>
+
+  <path d="M196 228 L328 248 L328 468 L196 448 Z" fill="#3a2318"/>
+  <path d="M484 228 L352 248 L352 468 L484 448 Z" fill="#3a2318"/>
+
+  <path d="M210 236 L328 254 L328 460 L210 442 Z" fill="#fdfdfd" opacity="0.94"/>
+  <path d="M470 236 L352 254 L352 460 L470 442 Z" fill="#fdfdfd" opacity="0.86"/>
+
+  <path d="M340 247 L340 464" stroke="#5c4033" stroke-width="3.5" fill="none"/>
+
+  <line x1="224" y1="272" x2="316" y2="274" stroke="#d4a373" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <line x1="224" y1="287" x2="314" y2="289" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity="0.18"/>
+  <line x1="224" y1="300" x2="316" y2="302" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity="0.18"/>
+
+  <text x="267" y="406" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="110" font-weight="700"
+    fill="#d4a373" opacity="0.88">A</text>
+
+  <line x1="224" y1="424" x2="316" y2="422" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity="0.18"/>
+  <line x1="224" y1="438" x2="308" y2="436" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity="0.18"/>
+
+  <line x1="364" y1="272" x2="456" y2="274" stroke="#d4a373" stroke-width="2.5" stroke-linecap="round" opacity="0.65"/>
+  <line x1="364" y1="287" x2="454" y2="289" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity="0.15"/>
+  <line x1="364" y1="300" x2="456" y2="302" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity="0.15"/>
+
+  <text x="413" y="406" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="110" font-weight="700"
+    fill="#d4a373" opacity="0.72">P</text>
+
+  <line x1="364" y1="424" x2="456" y2="422" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity="0.15"/>
+  <line x1="364" y1="438" x2="444" y2="436" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity="0.15"/>
+
+</svg>

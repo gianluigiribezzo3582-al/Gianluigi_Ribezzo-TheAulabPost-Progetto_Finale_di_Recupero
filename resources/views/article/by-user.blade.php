@@ -10,13 +10,9 @@
             @forelse($articles as $article)
             <div class="col-md-4">
                 <div class="card h-100 card-editorial shadow-sm">
-                    <div style="height: 200px; overflow: hidden;">
-                        @if($article->image)
-                            <img src="{{ Storage::url($article->image) }}" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
-                        @else
-                            <img src="https://picsum.photos/600/400" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
-                        @endif
-                    </div>
+                    @if($article->image)
+                        <img src="{{ Storage::url($article->image) }}" class="card-img-top w-100" style="max-height: 220px; object-fit: cover;" alt="{{ $article->title }}">
+                    @endif
                     <div class="card-body p-4 d-flex flex-column">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <a href="{{ route('article.byCategory', ['category' => $article->category]) }}" class="badge bg-accent text-dark small fw-bold text-uppercase text-decoration-none">{{ $article->category->name }}</a>

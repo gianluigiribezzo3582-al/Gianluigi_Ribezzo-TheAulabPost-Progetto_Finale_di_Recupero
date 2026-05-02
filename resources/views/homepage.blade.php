@@ -17,7 +17,7 @@
             @if (session('status') == 'login')
                 <div class="alert alert-success alert-dismissible fade show border-0 shadow-sm mb-4" role="alert">
                     <i class="bi bi-check-circle-fill me-2"></i>
-                    Bentornato, <strong>{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</strong>, siamo lieti di rivederti!
+                    Bentornato/a, <strong>{{ Auth::user()->first_name }}</strong>, siamo lieti di rivederti!
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
                     <div class="p-5 text-center">
-                        <i class="bi bi-feather display-1 text-accent opacity-50"></i>
+                        <img src="{{ asset('aulab_post_logo.svg') }}" alt="The Aulab Post" style="height: 250px; opacity: 0.8">
                     </div>
                 </div>
             </div>
@@ -70,13 +70,9 @@
             @forelse($articles as $article)
             <div class="col-md-3">
                 <div class="card h-100 card-editorial shadow-sm">
-                    <div style="height: 200px; overflow: hidden;">
-                        @if($article->image)
-                            <img src="{{ Storage::url($article->image) }}" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
-                        @else
-                            <img src="https://picsum.photos/600/400" class="card-img-top w-100 h-100" style="object-fit: cover;" alt="{{ $article->title }}">
-                        @endif
-                    </div>
+                    @if($article->image)
+                        <img src="{{ Storage::url($article->image) }}" class="card-img-top w-100" style="max-height: 220px; object-fit: cover;" alt="{{ $article->title }}">
+                    @endif
                     <div class="card-body p-4 d-flex flex-column bg-body-secondary">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <a href="{{ route('article.byCategory', ['category' => $article->category]) }}" class="badge bg-accent text-dark small fw-bold text-uppercase text-decoration-none">{{ $article->category->name }}</a>

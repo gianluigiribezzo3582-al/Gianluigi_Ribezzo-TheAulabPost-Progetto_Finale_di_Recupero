@@ -19,9 +19,17 @@
                 <li class="nav-item">
                     <a class="nav-link fw-medium" href="{{ route('article.index') }}">Tutti gli articoli</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link fw-medium" href="{{ route('careers') }}">Lavora con noi</a>
-                </li>
+                @auth
+                    @if(!Auth::user()->is_admin && !Auth::user()->is_revisor)
+                        <li class="nav-item">
+                            <a class="nav-link fw-medium" href="{{ route('careers') }}">Lavora con noi</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium" href="{{ route('careers') }}">Lavora con noi</a>
+                    </li>
+                @endauth
             </ul>
             
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center flex-row justify-content-end">
@@ -52,7 +60,7 @@
                             @elseif(Auth::user()->is_revisor)
                                 <li><a class="dropdown-item" href="{{ route('revisor.dashboard') }}"><i class="bi bi-eye me-2"></i>Dashboard Revisore</a></li>
                             @elseif(Auth::user()->is_writer)
-                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil-square me-2"></i>La mia Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{{ route('writer.dashboard') }}"><i class="bi bi-pencil-square me-2"></i>La mia Dashboard</a></li>
                             @endif
                             <li><hr class="dropdown-divider"></li>
                             <li>

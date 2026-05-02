@@ -10,8 +10,6 @@
             <div class="col-12 col-md-8">
                 @if($article->image)
                     <img src="{{ Storage::url($article->image) }}" class="img-fluid rounded shadow-sm mb-4 w-100" alt="{{ $article->title }}">
-                @else
-                    <img src="https://picsum.photos/1200/600" class="img-fluid rounded shadow-sm mb-4 w-100" alt="Immagine di default">
                 @endif
                 
                 <div class="d-flex justify-content-between align-items-center mb-4">

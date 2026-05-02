@@ -9,7 +9,13 @@
                 <h6 class="fw-bold mb-3">Link Utili</h6>
                 <ul class="list-unstyled">
                     <li><a href="{{ route('article.index') }}" class="text-decoration-none text-reset small">Tutti gli articoli</a></li>
-                    <li><a href="{{ route('careers') }}" class="btn btn-brand btn-sm px-3 text-nowrap mt-2">Lavora con noi</a></li>
+                    @auth
+                        @if(!Auth::user()->is_admin && !Auth::user()->is_revisor)
+                            <li><a href="{{ route('careers') }}" class="btn btn-brand btn-sm px-3 text-nowrap mt-2">Lavora con noi</a></li>
+                        @endif
+                    @else
+                        <li><a href="{{ route('careers') }}" class="btn btn-brand btn-sm px-3 text-nowrap mt-2">Lavora con noi</a></li>
+                    @endauth
                 </ul>
             </div>
             <div class="col-md-4 text-md-end">
